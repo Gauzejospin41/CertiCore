@@ -3,62 +3,74 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>CertiCore - Coming Soon</title>
   <style>
+    /* Reset */
     * {
-    margin: 0;
-    padding: 0;
-}
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-    background-color: rgb(32, 20, 20);
-    
-}
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: rgb(32, 20, 20);
+      color: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
 
-h1 {
-    font-size: 80px;
-    justify-content: center;
-    display: flex;
-    color: #fcba03;
-}
+    h1 {
+      font-size: 60px;
+      color: #fcba03;
+      margin-top: 40px;
+    }
 
-.np {
-    display: flex;
-    justify-content: center;
-    color: #ffffff;
-    font-size: 27px;
-}
+    .np {
+      font-size: 24px;
+      margin-top: 20px;
+      max-width: 800px;
+      line-height: 1.6;
+    }
 
-div {
-    margin-top: 20px;
-    display: flex;
-    justify-content: center;
-    color: #ffffff;
-    font-size: 27px;
-    width: 700px; height: 190px;
-    background-color: #222351;
-    padding: 20px;
-    border-radius: 10px;    margin-left: 520px;
-    margin-top: 45px;
-}
+    .announcement {
+      background-color: #222351;
+      padding: 30px 25px;
+      border-radius: 12px;
+      margin-top: 40px;
+      max-width: 700px;
+      line-height: 1.6;
+      font-size: 22px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
 
-.px {
-    display: flex;
-    justify-content: center;
-    color: #ffffff;
-    font-size: 27px;
-    margin-top: 220px;
-}
+    .contact {
+      margin-top: 50px;
+      font-size: 22px;
+      color: #ffffff;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      h1 { font-size: 40px; }
+      .np, .announcement, .contact { font-size: 18px; width: 90%; }
+    }
   </style>
 </head>
 <body>
-  <h1>Welcome to CertiCore </h1>
-  <p class="np">Your one-stop solution for all certification needs.
-  <div>
-    <p>This site is under construction. please check back Later
-  This site will be available on September 2026
-    we appreciate your patience and understanding.</p>
+  <h1>Welcome to CertiCore</h1>
+  <p class="np">Your one-stop solution for all certification needs.</p>
+
+  <div class="announcement">
+    <p>This site is currently under construction. Please check back later!<br><br>
+    The site will be available in <strong>September 2026</strong>. We appreciate your patience and understanding.</p>
   </div>
-  <p class="px">For any other question please send us an Email to info@certicore.org</p>
+
+  <p class="contact">For any questions, please email us at <a href="mailto:info@certicore.org" style="color:#fcba03; text-decoration:none;">info@certicore.org</a></p>
 </body>
 </html>
+

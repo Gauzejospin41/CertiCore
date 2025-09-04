@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>System Status - CertiCore Professional IT Certification Training</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .status-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+        }
+        
+        .status-operational {
+            background-color: rgba(39, 174, 96, 0.1);
+            color: var(--success-color);
+        }
+        
+        .status-degraded {
+            background-color: rgba(243, 156, 18, 0.1);
+            color: var(--warning-color);
+        }
+        
+        .status-down {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            margin-bottom: var(--spacing-lg);
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid var(--success-color);
+        }
+        
+        .service-card.degraded {
+            border-left-color: var(--warning-color);
+        }
+        
+        .service-card.down {
+            border-left-color: var(--primary-color);
+        }
+        
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .incident-card {
+            background: var(--light-gray);
+            border-radius: var(--radius-md);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .incident-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-sm);
+        }
+        
+        .incident-title {
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+        
+        .incident-time {
+            font-size: var(--font-size-sm);
+            color: var(--gray);
+        }
+        
+        .uptime-bar {
+            height: 8px;
+            background: var(--light-gray);
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            margin: var(--spacing-sm) 0;
+        }
+        
+        .uptime-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success-color), var(--accent-color));
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <span>CertiCore</span>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="courses.html" class="nav-link">Courses</a></li>
+                    <li><a href="exams.html" class="nav-link">Practice Exams</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-auth">
+                    <button class="btn btn-outline">Sign In</button>
+                    <button class="btn btn-primary">Get Started</button>
+                </div>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- System Status Page Content -->
+    <main style="padding-top: 80px;">
+        <!-- Status Header -->
+        <section class="status-header" style="padding: var(--spacing-3xl) 0; background-color: var(--light-gray);">
+            <div class="container">
+                <div class="section-header">
+                    <h1>System Status</h1>
+                    <p>Real-time status of CertiCore services and infrastructure</p>
+                    <div style="margin-top: var(--spacing-lg);">
+                        <span class="status-indicator status-operational">
+                            <i class="fas fa-check-circle"></i>
+                            All Systems Operational
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Status -->
+        <section style="padding: var(--spacing-3xl) 0;">
+            <div class="container">
+                <h2 style="color: var(--secondary-color); margin-bottom: var(--spacing-xl);">Current Status</h2>
+                
+                <div class="service-card">
+                    <div class="service-header">
+                        <div>
+                            <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-xs);">Learning Platform</h3>
+                            <p style="color: var(--gray); margin: 0;">Course delivery and student portal</p>
+                        </div>
+                        <span class="status-indicator status-operational">
+                            <i class="fas fa-check-circle"></i>
+                            Operational
+                        </span>
+                    </div>
+                    <div class="uptime-bar">
+                        <div class="uptime-fill" style="width: 99.9%"></div>
+                    </div>
+                    <p style="font-size: var(--font-size-sm); color: var(--gray); margin: 0;">99.9% uptime over the last 30 days</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div>
+                            <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-xs);">Practice Exams</h3>
+                            <p style="color: var(--gray); margin: 0;">Exam engine and scoring system</p>
+                        </div>
+                        <span class="status-indicator status-operational">
+                            <i class="fas fa-check-circle"></i>
+                            Operational
+                        </span>
+                    </div>
+                    <div class="uptime-bar">
+                        <div class="uptime-fill" style="width: 99.8%"></div>
+                    </div>
+                    <p style="font-size: var(--font-size-sm); color: var(--gray); margin: 0;">99.8% uptime over the last 30 days</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div>
+                            <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-xs);">Video Streaming</h3>
+                            <p style="color: var(--gray); margin: 0;">Course videos and live sessions</p>
+                        </div>
+                        <span class="status-indicator status-operational">
+                            <i class="fas fa-check-circle"></i>
+                            Operational
+                        </span>
+                    </div>
+                    <div class="uptime-bar">
+                        <div class="uptime-fill" style="width: 99.7%"></div>
+                    </div>
+                    <p style="font-size: var(--font-size-sm); color: var(--gray); margin: 0;">99.7% uptime over the last 30 days</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div>
+                            <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-xs);">User Authentication</h3>
+                            <p style="color: var(--gray); margin: 0;">Login and account management</p>
+                        </div>
+                        <span class="status-indicator status-operational">
+                            <i class="fas fa-check-circle"></i>
+                            Operational
+                        </span>
+                    </div>
+                    <div class="uptime-bar">
+                        <div class="uptime-fill" style="width: 100%"></div>
+                    </div>
+                    <p style="font-size: var(--font-size-sm); color: var(--gray); margin: 0;">100% uptime over the last 30 days</p>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div>
+                            <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-xs);">Payment Processing</h3>
+                            <p style="color: var(--gray); margin: 0;">Course purchases and subscriptions</p>
+                        </div>
+                        <span class="status-indicator status-operational">
+                            <i class="fas fa-check-circle"></i>
+                            Operational
+                        </span>
+                    </div>
+                    <div class="uptime-bar">
+                        <div class="uptime-fill" style="width: 99.9%"></div>
+                    </div>
+                    <p style="font-size: var(--font-size-sm); color: var(--gray); margin: 0;">99.9% uptime over the last 30 days</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Incidents -->
+        <section style="padding: var(--spacing-3xl) 0; background-color: var(--light-gray);">
+            <div class="container">
+                <h2 style="color: var(--secondary-color); margin-bottom: var(--spacing-xl);">Recent Incidents</h2>
+                
+                <div class="incident-card">
+                    <div class="incident-header">
+                        <span class="incident-title">Scheduled Maintenance - Video Streaming</span>
+                        <span class="incident-time">Dec 15, 2024 - 2:00 AM EST</span>
+                    </div>
+                    <p style="color: var(--gray); margin-bottom: var(--spacing-sm);">
+                        <strong>Resolved:</strong> Scheduled maintenance on video streaming infrastructure completed successfully. All services restored.
+                    </p>
+                    <span class="status-indicator status-operational">
+                        <i class="fas fa-check-circle"></i>
+                        Resolved
+                    </span>
+                </div>
+
+                <div class="incident-card">
+                    <div class="incident-header">
+                        <span class="incident-title">Brief Login Issues</span>
+                        <span class="incident-time">Dec 10, 2024 - 3:15 PM EST</span>
+                    </div>
+                    <p style="color: var(--gray); margin-bottom: var(--spacing-sm);">
+                        <strong>Resolved:</strong> Some users experienced brief login delays due to increased traffic. Issue resolved within 15 minutes.
+                    </p>
+                    <span class="status-indicator status-operational">
+                        <i class="fas fa-check-circle"></i>
+                        Resolved
+                    </span>
+                </div>
+
+                <div style="text-align: center; margin-top: var(--spacing-xl);">
+                    <p style="color: var(--gray);">No major incidents in the last 30 days</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Performance Metrics -->
+        <section style="padding: var(--spacing-3xl) 0;">
+            <div class="container">
+                <h2 style="color: var(--secondary-color); margin-bottom: var(--spacing-xl);">Performance Metrics</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: var(--spacing-xl);">
+                    <div style="text-align: center; padding: var(--spacing-xl); background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                        <div style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--success-color); margin-bottom: var(--spacing-sm);">99.9%</div>
+                        <h4 style="color: var(--secondary-color); margin-bottom: var(--spacing-xs);">Overall Uptime</h4>
+                        <p style="color: var(--gray); margin: 0;">Last 30 days</p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: var(--spacing-xl); background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                        <div style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--accent-color); margin-bottom: var(--spacing-sm);">1.2s</div>
+                        <h4 style="color: var(--secondary-color); margin-bottom: var(--spacing-xs);">Avg Response Time</h4>
+                        <p style="color: var(--gray); margin: 0;">Global average</p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: var(--spacing-xl); background: var(--white); border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                        <div style="font-size: var(--font-size-3xl); font-weight: 700; color: var(--primary-color); margin-bottom: var(--spacing-sm);">0</div>
+                        <h4 style="color: var(--secondary-color); margin-bottom: var(--spacing-xs);">Active Incidents</h4>
+                        <p style="color: var(--gray); margin: 0;">Currently</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-certificate"></i>
+                        <span>CertiCore</span>
+                    </div>
+                    <p>Empowering IT professionals with world-class certification training and practice exams.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Courses</h4>
+                    <ul>
+                        <li><a href="courses.html">CertiCore Certifications</a></li>
+                        <li><a href="courses.html">Cisco Certifications</a></li>
+                        <li><a href="courses.html">Microsoft Certifications</a></li>
+                        <li><a href="courses.html">AWS Certifications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="exams.html">Practice Exams</a></li>
+                        <li><a href="#">Study Guides</a></li>
+                        <li><a href="#">Video Library</a></li>
+                        <li><a href="#">Community Forum</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="system.html">System Status</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CertiCore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Library - CertiCore Professional IT Certification Training</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .video-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .video-thumbnail {
+            position: relative;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .video-thumbnail::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .video-card:hover .video-thumbnail::before {
+            opacity: 1;
+        }
+        
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: var(--font-size-xl);
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+        
+        .video-card:hover .play-button {
+            background: var(--white);
+            transform: scale(1.1);
+        }
+        
+        .video-duration {
+            position: absolute;
+            bottom: var(--spacing-sm);
+            right: var(--spacing-sm);
+            background: rgba(0, 0, 0, 0.8);
+            color: var(--white);
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-sm);
+            font-weight: 600;
+        }
+        
+        .video-content {
+            padding: var(--spacing-lg);
+        }
+        
+        .video-title {
+            font-size: var(--font-size-lg);
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-sm);
+            line-height: 1.3;
+        }
+        
+        .video-description {
+            color: var(--gray);
+            margin-bottom: var(--spacing-md);
+            font-size: var(--font-size-sm);
+            line-height: 1.5;
+        }
+        
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .video-instructor {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            color: var(--gray);
+            font-size: var(--font-size-sm);
+        }
+        
+        .video-views {
+            color: var(--gray);
+            font-size: var(--font-size-sm);
+        }
+        
+        .video-tags {
+            display: flex;
+            gap: var(--spacing-xs);
+            flex-wrap: wrap;
+        }
+        
+        .video-tag {
+            padding: var(--spacing-xs) var(--spacing-sm);
+            background: var(--light-gray);
+            color: var(--secondary-color);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: 500;
+        }
+        
+        .filter-tabs {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-2xl);
+            border-bottom: 2px solid var(--light-gray);
+            overflow-x: auto;
+            padding-bottom: var(--spacing-sm);
+        }
+        
+        .filter-tab {
+            padding: var(--spacing-sm) var(--spacing-lg);
+            background: none;
+            border: none;
+            color: var(--gray);
+            font-weight: 500;
+            cursor: pointer;
+            white-space: nowrap;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s ease;
+        }
+        
+        .filter-tab.active,
+        .filter-tab:hover {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+        
+        .search-section {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-xl);
+            flex-wrap: wrap;
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            padding-left: 45px;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: var(--spacing-md);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        .sort-dropdown {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 2px solid var(--light-gray);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+        }
+        
+        .playlist-section {
+            background: var(--light-gray);
+            padding: var(--spacing-2xl) 0;
+            margin-top: var(--spacing-3xl);
+        }
+        
+        .playlist-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+        
+        .playlist-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--success-color), var(--accent-color));
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: var(--font-size-2xl);
+        }
+        
+        .playlist-info h3 {
+            color: var(--secondary-color);
+            margin-bottom: var(--spacing-xs);
+        }
+        
+        .playlist-stats {
+            color: var(--gray);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--spacing-sm);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <span>CertiCore</span>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="courses.html" class="nav-link">Courses</a></li>
+                    <li><a href="exams.html" class="nav-link">Practice Exams</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-auth">
+                    <button class="btn btn-outline">Sign In</button>
+                    <button class="btn btn-primary">Get Started</button>
+                </div>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Video Library Page Content -->
+    <main style="padding-top: 80px;">
+        <!-- Video Library Header -->
+        <section class="library-header" style="padding: var(--spacing-3xl) 0; background-color: var(--light-gray);">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Video Library</h1>
+                    <p>Access thousands of hours of expert-led training videos and tutorials</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search and Filters -->
+        <section style="padding: var(--spacing-2xl) 0;">
+            <div class="container">
+                <div class="search-section">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search videos..." id="videoSearch">
+                    </div>
+                    <select class="sort-dropdown" id="sortVideos">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="popular">Most Popular</option>
+                        <option value="duration">Duration</option>
+                    </select>
+                </div>
+
+                <div class="filter-tabs">
+                    <button class="filter-tab active" data-category="all">All Videos</button>
+                    <button class="filter-tab" data-category="certicore-a+">CertiCore A+</button>
+                    <button class="filter-tab" data-category="certicore-security+">CertiCore Security+</button>
+                    <button class="filter-tab" data-category="certicore-network+">CertiCore Network+</button>
+                    <button class="filter-tab" data-category="cisco">Cisco CCNA</button>
+                    <button class="filter-tab" data-category="microsoft">Microsoft Azure</button>
+                    <button class="filter-tab" data-category="aws">AWS</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Video Grid -->
+        <section style="padding: 0 0 var(--spacing-3xl);">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--spacing-xl);" id="videoGrid">
+                    
+                    <div class="video-card" data-category="certicore-a+">
+                        <div class="video-thumbnail" onclick="playVideo('a+-hardware-basics')">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="video-duration">15:32</div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">CertiCore A+ Hardware Fundamentals</h3>
+                            <p class="video-description">Learn the essential hardware components and their functions in modern computer systems.</p>
+                            <div class="video-meta">
+                                <div class="video-instructor">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span>Sarah Johnson</span>
+                                </div>
+                                <div class="video-views">12.5K views</div>
+                            </div>
+                            <div class="video-tags">
+                                <span class="video-tag">Hardware</span>
+                                <span class="video-tag">Beginner</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="video-card" data-category="certicore-security+">
+                        <div class="video-thumbnail" onclick="playVideo('security+-threats')">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="video-duration">22:18</div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Understanding Cybersecurity Threats</h3>
+                            <p class="video-description">Comprehensive overview of modern cybersecurity threats and attack vectors.</p>
+                            <div class="video-meta">
+                                <div class="video-instructor">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span>Michael Chen</span>
+                                </div>
+                                <div class="video-views">8.9K views</div>
+                            </div>
+                            <div class="video-tags">
+                                <span class="video-tag">Security</span>
+                                <span class="video-tag">Intermediate</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="video-card" data-category="certicore-network+">
+                        <div class="video-thumbnail" onclick="playVideo('network+-osi-model')">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="video-duration">18:45</div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">OSI Model Deep Dive</h3>
+                            <p class="video-description">Master the seven layers of the OSI model with practical examples and mnemonics.</p>
+                            <div class="video-meta">
+                                <div class="video-instructor">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span>David Rodriguez</span>
+                                </div>
+                                <div class="video-views">15.2K views</div>
+                            </div>
+                            <div class="video-tags">
+                                <span class="video-tag">Networking</span>
+                                <span class="video-tag">Fundamental</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="video-card" data-category="cisco">
+                        <div class="video-thumbnail" onclick="playVideo('cisco-vlan-config')">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="video-duration">28:12</div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Cisco VLAN Configuration</h3>
+                            <p class="video-description">Step-by-step guide to configuring VLANs on Cisco switches with practical examples.</p>
+                            <div class="video-meta">
+                                <div class="video-instructor">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span>Alex Thompson</span>
+                                </div>
+                                <div class="video-views">6.7K views</div>
+                            </div>
+                            <div class="video-tags">
+                                <span class="video-tag">Cisco</span>
+                                <span class="video-tag">Hands-on</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="video-card" data-category="microsoft">
+                        <div class="video-thumbnail" onclick="playVideo('azure-fundamentals')">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="video-duration">25:30</div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Azure Cloud Services Overview</h3>
+                            <p class="video-description">Introduction to Microsoft Azure core services and cloud computing concepts.</p>
+                            <div class="video-meta">
+                                <div class="video-instructor">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span>Lisa Wang</span>
+                                </div>
+                                <div class="video-views">11.3K views</div>
+                            </div>
+                            <div class="video-tags">
+                                <span class="video-tag">Azure</span>
+                                <span class="video-tag">Cloud</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="video-card" data-category="certicore-a+">
+                        <div class="video-thumbnail" onclick="playVideo('a+-troubleshooting')">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="video-duration">32:15</div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">PC Troubleshooting Methodology</h3>
+                            <p class="video-description">Learn systematic approaches to diagnosing and resolving computer hardware issues.</p>
+                            <div class="video-meta">
+                                <div class="video-instructor">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span>Sarah Johnson</span>
+                                </div>
+                                <div class="video-views">9.8K views</div>
+                            </div>
+                            <div class="video-tags">
+                                <span class="video-tag">Troubleshooting</span>
+                                <span class="video-tag">Practical</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="video-card" data-category="aws">
+                        <div class="video-thumbnail" onclick="playVideo('aws-ec2-basics')">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="video-duration">20:45</div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">AWS EC2 Instance Management</h3>
+                            <p class="video-description">Complete guide to launching and managing EC2 instances in Amazon Web Services.</p>
+                            <div class="video-meta">
+                                <div class="video-instructor">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span>James Miller</span>
+                                </div>
+                                <div class="video-views">7.4K views</div>
+                            </div>
+                            <div class="video-tags">
+                                <span class="video-tag">AWS</span>
+                                <span class="video-tag">Cloud</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="video-card" data-category="certicore-security+">
+                        <div class="video-thumbnail" onclick="playVideo('security+-cryptography')">
+                            <div class="play-button">
+                                <i class="fas fa-play"></i>
+                            </div>
+                            <div class="video-duration">35:22</div>
+                        </div>
+                        <div class="video-content">
+                            <h3 class="video-title">Cryptography and PKI Essentials</h3>
+                            <p class="video-description">Master encryption algorithms, digital certificates, and public key infrastructure.</p>
+                            <div class="video-meta">
+                                <div class="video-instructor">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span>Michael Chen</span>
+                                </div>
+                                <div class="video-views">5.9K views</div>
+                            </div>
+                            <div class="video-tags">
+                                <span class="video-tag">Cryptography</span>
+                                <span class="video-tag">Advanced</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Playlists -->
+        <section class="playlist-section">
+            <div class="container">
+                <h2 style="color: var(--secondary-color); margin-bottom: var(--spacing-xl); text-align: center;">Featured Playlists</h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: var(--spacing-xl);">
+                    <div class="playlist-card">
+                        <div class="playlist-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <div class="playlist-info">
+                            <h3>CertiCore A+ Complete Series</h3>
+                            <div class="playlist-stats">24 videos • 8 hours • Updated weekly</div>
+                            <p style="color: var(--gray); margin: 0;">Complete A+ certification training from hardware basics to advanced troubleshooting.</p>
+                        </div>
+                        <button class="btn btn-primary">Watch Playlist</button>
+                    </div>
+                    
+                    <div class="playlist-card">
+                        <div class="playlist-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="playlist-info">
+                            <h3>Security+ Mastery Course</h3>
+                            <div class="playlist-stats">32 videos • 12 hours • Updated monthly</div>
+                            <p style="color: var(--gray); margin: 0;">Comprehensive cybersecurity training covering all Security+ exam objectives.</p>
+                        </div>
+                        <button class="btn btn-primary">Watch Playlist</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-certificate"></i>
+                        <span>CertiCore</span>
+                    </div>
+                    <p>Empowering IT professionals with world-class certification training and practice exams.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Courses</h4>
+                    <ul>
+                        <li><a href="courses.html">CertiCore Certifications</a></li>
+                        <li><a href="courses.html">Cisco Certifications</a></li>
+                        <li><a href="courses.html">Microsoft Certifications</a></li>
+                        <li><a href="courses.html">AWS Certifications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="exams.html">Practice Exams</a></li>
+                        <li><a href="study-guides.html">Study Guides</a></li>
+                        <li><a href="video-library.html">Video Library</a></li>
+                        <li><a href="community-forum.html">Community Forum</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="system-status.html">System Status</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CertiCore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Video filtering and search functionality
+        const videoSearch = document.getElementById('videoSearch');
+        const sortDropdown = document.getElementById('sortVideos');
+        const filterTabs = document.querySelectorAll('.filter-tab');
+        const videoCards = document.querySelectorAll('.video-card');
+
+        let currentCategory = 'all';
+
+        // Filter by category
+        filterTabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                filterTabs.forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                currentCategory = this.getAttribute('data-category');
+                filterVideos();
+            });
+        });
+
+        // Search functionality
+        videoSearch.addEventListener('input', filterVideos);
+
+        function filterVideos() {
+            const searchTerm = videoSearch.value.toLowerCase();
+
+            videoCards.forEach(card => {
+                const title = card.querySelector('.video-title').textContent.toLowerCase();
+                const description = card.querySelector('.video-description').textContent.toLowerCase();
+                const category = card.getAttribute('data-category');
+
+                const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+                const matchesCategory = currentCategory === 'all' || category === currentCategory;
+
+                if (matchesSearch && matchesCategory) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // Video play functionality
+        function playVideo(videoId) {
+            showNotification('Video player will be available after signing in. Premium content requires subscription.', 'info');
+        }
+
+        // Playlist functionality
+        document.querySelectorAll('.playlist-card .btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                showNotification('Playlist access requires a premium subscription. Sign up to unlock all content!', 'info');
+            });
+        });
+
+        // Sort functionality
+        sortDropdown.addEventListener('change', function() {
+            const sortBy = this.value;
+            showNotification(`Videos sorted by ${sortBy}`, 'success');
+            // In a real application, this would re-order the video cards
+        });
+    </script>
+</body>
+</html>

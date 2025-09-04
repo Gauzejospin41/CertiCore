@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Guides - CertiCore Professional IT Certification Training</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .guide-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .guide-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .guide-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .guide-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .guide-icon i {
+            font-size: var(--font-size-xl);
+            color: var(--white);
+        }
+        
+        .guide-meta {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            flex-wrap: wrap;
+        }
+        
+        .guide-badge {
+            padding: var(--spacing-xs) var(--spacing-sm);
+            border-radius: var(--radius-sm);
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+        }
+        
+        .badge-level {
+            background-color: var(--success-color);
+            color: var(--white);
+        }
+        
+        .badge-pages {
+            background-color: var(--accent-color);
+            color: var(--white);
+        }
+        
+        .badge-updated {
+            background-color: var(--warning-color);
+            color: var(--white);
+        }
+        
+        .download-section {
+            display: flex;
+            gap: var(--spacing-sm);
+            margin-top: var(--spacing-lg);
+        }
+        
+        .btn-download {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-xs);
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 2px solid var(--primary-color);
+            background: var(--white);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-download:hover {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        
+        .search-filter {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-2xl);
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        
+        .search-box {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            padding-left: 45px;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: var(--spacing-md);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+        
+        .filter-dropdown {
+            padding: var(--spacing-sm) var(--spacing-md);
+            border: 2px solid var(--light-gray);
+            border-radius: var(--radius-md);
+            font-size: var(--font-size-base);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <span>CertiCore</span>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="courses.html" class="nav-link">Courses</a></li>
+                    <li><a href="exams.html" class="nav-link">Practice Exams</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-auth">
+                    <button class="btn btn-outline">Sign In</button>
+                    <button class="btn btn-primary">Get Started</button>
+                </div>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Study Guides Page Content -->
+    <main style="padding-top: 80px;">
+        <!-- Study Guides Header -->
+        <section class="guides-header" style="padding: var(--spacing-3xl) 0; background-color: var(--light-gray);">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Study Guides</h1>
+                    <p>Comprehensive study materials to help you master your certification exams</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search and Filter -->
+        <section style="padding: var(--spacing-2xl) 0;">
+            <div class="container">
+                <div class="search-filter">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search study guides..." id="guideSearch">
+                    </div>
+                    <select class="filter-dropdown" id="levelFilter">
+                        <option value="">All Levels</option>
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                    <select class="filter-dropdown" id="certFilter">
+                        <option value="">All Certifications</option>
+                        <option value="a+">CertiCore A+</option>
+                        <option value="security+">CertiCore Security+</option>
+                        <option value="network+">CertiCore Network+</option>
+                        <option value="cisco">Cisco CCNA</option>
+                        <option value="microsoft">Microsoft Azure</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Study Guides Grid -->
+        <section style="padding: 0 0 var(--spacing-3xl);">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: var(--spacing-xl);" id="guidesGrid">
+                    
+                    <div class="guide-card" data-level="intermediate" data-cert="a+">
+                        <div class="guide-icon">
+                            <i class="fas fa-desktop"></i>
+                        </div>
+                        <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">CertiCore A+ Core 1 Study Guide</h3>
+                        <p style="color: var(--gray); margin-bottom: var(--spacing-md);">Complete guide covering hardware, networking, mobile devices, and troubleshooting for the 220-1101 exam.</p>
+                        
+                        <div class="guide-meta">
+                            <span class="guide-badge badge-level">Intermediate</span>
+                            <span class="guide-badge badge-pages">156 Pages</span>
+                            <span class="guide-badge badge-updated">Updated Dec 2024</span>
+                        </div>
+                        
+                        <div style="margin-bottom: var(--spacing-md);">
+                            <h4 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">What's Included:</h4>
+                            <ul style="color: var(--gray); padding-left: var(--spacing-lg);">
+                                <li>Hardware components and troubleshooting</li>
+                                <li>Network protocols and configurations</li>
+                                <li>Mobile device management</li>
+                                <li>Practice questions and scenarios</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="download-section">
+                            <a href="#" class="btn-download">
+                                <i class="fas fa-download"></i>
+                                PDF
+                            </a>
+                            <a href="#" class="btn-download">
+                                <i class="fas fa-file-word"></i>
+                                DOCX
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="guide-card" data-level="advanced" data-cert="security+">
+                        <div class="guide-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">CertiCore Security+ Complete Guide</h3>
+                        <p style="color: var(--gray); margin-bottom: var(--spacing-md);">Comprehensive cybersecurity guide for the SY0-701 exam covering all security domains.</p>
+                        
+                        <div class="guide-meta">
+                            <span class="guide-badge badge-level">Advanced</span>
+                            <span class="guide-badge badge-pages">248 Pages</span>
+                            <span class="guide-badge badge-updated">Updated Dec 2024</span>
+                        </div>
+                        
+                        <div style="margin-bottom: var(--spacing-md);">
+                            <h4 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">What's Included:</h4>
+                            <ul style="color: var(--gray); padding-left: var(--spacing-lg);">
+                                <li>Threat management and vulnerability assessment</li>
+                                <li>Cryptography and PKI implementation</li>
+                                <li>Identity and access management</li>
+                                <li>Risk management frameworks</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="download-section">
+                            <a href="#" class="btn-download">
+                                <i class="fas fa-download"></i>
+                                PDF
+                            </a>
+                            <a href="#" class="btn-download">
+                                <i class="fas fa-file-word"></i>
+                                DOCX
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="guide-card" data-level="intermediate" data-cert="network+">
+                        <div class="guide-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">CertiCore Network+ Study Guide</h3>
+                        <p style="color: var(--gray); margin-bottom: var(--spacing-md);">Essential networking concepts and protocols for the N10-008 certification exam.</p>
+                        
+                        <div class="guide-meta">
+                            <span class="guide-badge badge-level">Intermediate</span>
+                            <span class="guide-badge badge-pages">198 Pages</span>
+                            <span class="guide-badge badge-updated">Updated Nov 2024</span>
+                        </div>
+                        
+                        <div style="margin-bottom: var(--spacing-md);">
+                            <h4 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">What's Included:</h4>
+                            <ul style="color: var(--gray); padding-left: var(--spacing-lg);">
+                                <li>OSI model and network protocols</li>
+                                <li>Routing and switching fundamentals</li>
+                                <li>Network security implementations</li>
+                                <li>Troubleshooting methodologies</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="download-section">
+                            <a href="#" class="btn-download">
+                                <i class="fas fa-download"></i>
+                                PDF
+                            </a>
+                            <a href="#" class="btn-download">
+                                <i class="fas fa-file-word"></i>
+                                DOCX
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="guide-card" data-level="advanced" data-cert="cisco">
+                        <div class="guide-icon">
+                            <i class="fas fa-server"></i>
+                        </div>
+                        <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">Cisco CCNA 200-301 Guide</h3>
+                        <p style="color: var(--gray); margin-bottom: var(--spacing-md);">Complete Cisco networking guide with hands-on labs and configuration examples.</p>
+                        
+                        <div class="guide-meta">
+                            <span class="guide-badge badge-level">Advanced</span>
+                            <span class="guide-badge badge-pages">312 Pages</span>
+                            <span class="guide-badge badge-updated">Updated Dec 2024</span>
+                        </div>
+                        
+                        <div style="margin-bottom: var(--spacing-md);">
+                            <h4 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">What's Included:</h4>
+                            <ul style="color: var(--gray); padding-left: var(--spacing-lg);">
+                                <li>Cisco IOS command reference</li>
+                                <li>VLAN and STP configurations</li>
+                                <li>OSPF and EIGRP routing protocols</li>
+                                <li>Lab exercises and packet tracer files</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="download-section">
+                            <a href="#" class="btn-download">
+                                <i class="fas fa-download"></i>
+                                PDF
+                            </a>
+                            <a href="#" class="btn-download">
+                                <i class="fas fa-file-archive"></i>
+                                Lab Files
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="guide-card" data-level="beginner" data-cert="microsoft">
+                        <div class="guide-icon">
+                            <i class="fab fa-microsoft"></i>
+                        </div>
+                        <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">Azure Fundamentals AZ-900</h3>
+                        <p style="color: var(--gray); margin-bottom: var(--spacing-md);">Introduction to Microsoft Azure cloud services and fundamental concepts.</p>
+                        
+                        <div class="guide-meta">
+                            <span class="guide-badge badge-level">Beginner</span>
+                            <span class="guide-badge badge-pages">124 Pages</span>
+                            <span class="guide-badge badge-updated">Updated Dec 2024</span>
+                        </div>
+                        
+                        <div style="margin-bottom: var(--spacing-md);">
+                            <h4 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">What's Included:</h4>
+                            <ul style="color: var(--gray); padding-left: var(--spacing-lg);">
+                                <li>Azure core services overview</li>
+                                <li>Cloud computing concepts</li>
+                                <li>Azure pricing and support</li>
+                                <li>Hands-on Azure portal exercises</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="download-section">
+                            <a href="#" class="btn-download">
+                                <i class="fas fa-download"></i>
+                                PDF
+                            </a>
+                            <a href="#" class="btn-download">
+                                <i class="fas fa-file-word"></i>
+                                DOCX
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="guide-card" data-level="intermediate" data-cert="a+">
+                        <div class="guide-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">CertiCore A+ Core 2 Study Guide</h3>
+                        <p style="color: var(--gray); margin-bottom: var(--spacing-md);">Operating systems, security, and operational procedures for the 220-1102 exam.</p>
+                        
+                        <div class="guide-meta">
+                            <span class="guide-badge badge-level">Intermediate</span>
+                            <span class="guide-badge badge-pages">178 Pages</span>
+                            <span class="guide-badge badge-updated">Updated Dec 2024</span>
+                        </div>
+                        
+                        <div style="margin-bottom: var(--spacing-md);">
+                            <h4 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">What's Included:</h4>
+                            <ul style="color: var(--gray); padding-left: var(--spacing-lg);">
+                                <li>Windows, macOS, and Linux administration</li>
+                                <li>Security best practices and procedures</li>
+                                <li>Troubleshooting methodologies</li>
+                                <li>Operational procedures and documentation</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="download-section">
+                            <a href="#" class="btn-download">
+                                <i class="fas fa-download"></i>
+                                PDF
+                            </a>
+                            <a href="#" class="btn-download">
+                                <i class="fas fa-file-word"></i>
+                                DOCX
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-certificate"></i>
+                        <span>CertiCore</span>
+                    </div>
+                    <p>Empowering IT professionals with world-class certification training and practice exams.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Courses</h4>
+                    <ul>
+                        <li><a href="courses.html">CertiCore Certifications</a></li>
+                        <li><a href="courses.html">Cisco Certifications</a></li>
+                        <li><a href="courses.html">Microsoft Certifications</a></li>
+                        <li><a href="courses.html">AWS Certifications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="exams.html">Practice Exams</a></li>
+                        <li><a href="study-guides.html">Study Guides</a></li>
+                        <li><a href="video-library.html">Video Library</a></li>
+                        <li><a href="community-forum.html">Community Forum</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="system-status.html">System Status</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CertiCore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Search and filter functionality
+        const searchInput = document.getElementById('guideSearch');
+        const levelFilter = document.getElementById('levelFilter');
+        const certFilter = document.getElementById('certFilter');
+        const guidesGrid = document.getElementById('guidesGrid');
+        const guideCards = document.querySelectorAll('.guide-card');
+
+        function filterGuides() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const selectedLevel = levelFilter.value;
+            const selectedCert = certFilter.value;
+
+            guideCards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const level = card.getAttribute('data-level');
+                const cert = card.getAttribute('data-cert');
+
+                const matchesSearch = title.includes(searchTerm) || description.includes(searchTerm);
+                const matchesLevel = !selectedLevel || level === selectedLevel;
+                const matchesCert = !selectedCert || cert === selectedCert;
+
+                if (matchesSearch && matchesLevel && matchesCert) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        searchInput.addEventListener('input', filterGuides);
+        levelFilter.addEventListener('change', filterGuides);
+        certFilter.addEventListener('change', filterGuides);
+
+        // Download button functionality
+        document.querySelectorAll('.btn-download').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const fileType = this.textContent.trim();
+                showNotification(`${fileType} download will be available after signing in.`, 'info');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - CertiCore Professional IT Certification Training</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <span>CertiCore</span>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="courses.html" class="nav-link">Courses</a></li>
+                    <li><a href="exams.html" class="nav-link">Practice Exams</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link active">Contact</a></li>
+                </ul>
+                <div class="nav-auth">
+                    <button class="btn btn-outline">Sign In</button>
+                    <button class="btn btn-primary">Get Started</button>
+                </div>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Contact Page Content -->
+    <main style="padding-top: 80px;">
+        <!-- Contact Header -->
+        <section class="contact-header" style="padding: var(--spacing-3xl) 0; background-color: var(--light-gray);">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Contact Us</h1>
+                    <p>Get in touch with our team for support, questions, or partnership opportunities</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Content -->
+        <section style="padding: var(--spacing-3xl) 0;">
+            <div class="container">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-3xl); align-items: start;">
+                    <!-- Contact Form -->
+                    <div>
+                        <h2 style="color: var(--secondary-color); margin-bottom: var(--spacing-lg);">Send us a Message</h2>
+                        <form id="contact-form" style="display: flex; flex-direction: column; gap: var(--spacing-lg);">
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md);">
+                                <div>
+                                    <label for="firstName" style="display: block; margin-bottom: var(--spacing-xs); font-weight: 500; color: var(--secondary-color);">First Name</label>
+                                    <input type="text" id="firstName" name="firstName" required style="width: 100%; padding: var(--spacing-sm); border: 2px solid var(--light-gray); border-radius: var(--radius-md); font-size: var(--font-size-base); transition: border-color 0.2s ease;">
+                                </div>
+                                <div>
+                                    <label for="lastName" style="display: block; margin-bottom: var(--spacing-xs); font-weight: 500; color: var(--secondary-color);">Last Name</label>
+                                    <input type="text" id="lastName" name="lastName" required style="width: 100%; padding: var(--spacing-sm); border: 2px solid var(--light-gray); border-radius: var(--radius-md); font-size: var(--font-size-base); transition: border-color 0.2s ease;">
+                                </div>
+                            </div>
+                            <div>
+                                <label for="email" style="display: block; margin-bottom: var(--spacing-xs); font-weight: 500; color: var(--secondary-color);">Email Address</label>
+                                <input type="email" id="email" name="email" required style="width: 100%; padding: var(--spacing-sm); border: 2px solid var(--light-gray); border-radius: var(--radius-md); font-size: var(--font-size-base); transition: border-color 0.2s ease;">
+                            </div>
+                            <div>
+                                <label for="subject" style="display: block; margin-bottom: var(--spacing-xs); font-weight: 500; color: var(--secondary-color);">Subject</label>
+                                <select id="subject" name="subject" required style="width: 100%; padding: var(--spacing-sm); border: 2px solid var(--light-gray); border-radius: var(--radius-md); font-size: var(--font-size-base); transition: border-color 0.2s ease;">
+                                    <option value="">Select a subject</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="support">Technical Support</option>
+                                    <option value="courses">Course Information</option>
+                                    <option value="partnership">Partnership</option>
+                                    <option value="billing">Billing Question</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="message" style="display: block; margin-bottom: var(--spacing-xs); font-weight: 500; color: var(--secondary-color);">Message</label>
+                                <textarea id="message" name="message" rows="6" required style="width: 100%; padding: var(--spacing-sm); border: 2px solid var(--light-gray); border-radius: var(--radius-md); font-size: var(--font-size-base); transition: border-color 0.2s ease; resize: vertical;"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-large">Send Message</button>
+                        </form>
+                    </div>
+
+                    <!-- Contact Information -->
+                    <div>
+                        <h2 style="color: var(--secondary-color); margin-bottom: var(--spacing-lg);">Get in Touch</h2>
+                        <div style="display: flex; flex-direction: column; gap: var(--spacing-xl);">
+                            <div style="display: flex; align-items: center; gap: var(--spacing-md);">
+                                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--primary-color), var(--accent-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-envelope" style="color: var(--white); font-size: var(--font-size-lg);"></i>
+                                </div>
+                                <div>
+                                    <h4 style="color: var(--secondary-color); margin-bottom: var(--spacing-xs);">Email</h4>
+                                    <p style="color: var(--gray);">support@certicore.org</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: var(--spacing-md);">
+                                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--success-color), var(--accent-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-phone" style="color: var(--white); font-size: var(--font-size-lg);"></i>
+                                </div>
+                                <div>
+                                    <h4 style="color: var(--secondary-color); margin-bottom: var(--spacing-xs);">Phone</h4>
+                                    <p style="color: var(--gray);">+1 (555) 123-4567</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: var(--spacing-md);">
+                                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--warning-color), var(--primary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-clock" style="color: var(--white); font-size: var(--font-size-lg);"></i>
+                                </div>
+                                <div>
+                                    <h4 style="color: var(--secondary-color); margin-bottom: var(--spacing-xs);">Support Hours</h4>
+                                    <p style="color: var(--gray);">Mon-Fri: 9AM-6PM EST</p>
+                                </div>
+                            </div>
+                            <div style="display: flex; align-items: center; gap: var(--spacing-md);">
+                                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--accent-color), var(--primary-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                                    <i class="fas fa-comments" style="color: var(--white); font-size: var(--font-size-lg);"></i>
+                                </div>
+                                <div>
+                                    <h4 style="color: var(--secondary-color); margin-bottom: var(--spacing-xs);">Live Chat</h4>
+                                    <p style="color: var(--gray);">Available 24/7 for students</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ Section -->
+                        <div style="margin-top: var(--spacing-2xl); padding: var(--spacing-xl); background: var(--light-gray); border-radius: var(--radius-lg);">
+                            <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-lg);">Frequently Asked Questions</h3>
+                            <div style="display: flex; flex-direction: column; gap: var(--spacing-md);">
+                                <div>
+                                    <h4 style="color: var(--secondary-color); margin-bottom: var(--spacing-xs);">How do I access my courses?</h4>
+                                    <p style="color: var(--gray); font-size: var(--font-size-sm);">Log in to your account and navigate to the "My Courses" section in your dashboard.</p>
+                                </div>
+                                <div>
+                                    <h4 style="color: var(--secondary-color); margin-bottom: var(--spacing-xs);">Can I get a refund?</h4>
+                                    <p style="color: var(--gray); font-size: var(--font-size-sm);">Yes, we offer a 30-day money-back guarantee for all courses.</p>
+                                </div>
+                                <div>
+                                    <h4 style="color: var(--secondary-color); margin-bottom: var(--spacing-xs);">Do you offer group discounts?</h4>
+                                    <p style="color: var(--gray); font-size: var(--font-size-sm);">Yes, we provide special pricing for teams of 5 or more students.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-certificate"></i>
+                        <span>CertiCore</span>
+                    </div>
+                    <p>Empowering IT professionals with world-class certification training and practice exams.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Courses</h4>
+                    <ul>
+                        <li><a href="courses.html">CertiCore Certifications</a></li>
+                        <li><a href="courses.html">Cisco Certifications</a></li>
+                        <li><a href="courses.html">Microsoft Certifications</a></li>
+                        <li><a href="courses.html">AWS Certifications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="exams.html">Practice Exams</a></li>
+                        <li><a href="#">Study Guides</a></li>
+                        <li><a href="#">Video Library</a></li>
+                        <li><a href="#">Community Forum</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="system-status.html">System Status</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CertiCore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Contact form handling
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Show success message
+            showNotification('Thank you for your message! We\'ll get back to you within 24 hours.', 'success');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Form input focus effects
+        document.querySelectorAll('input, select, textarea').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.style.borderColor = 'var(--primary-color)';
+            });
+            
+            input.addEventListener('blur', function() {
+                this.style.borderColor = 'var(--light-gray)';
+            });
+        });
+    </script>
+</body>
+</html>

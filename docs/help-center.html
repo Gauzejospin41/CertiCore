@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - CertiCore Professional IT Certification Training</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .search-box {
+            max-width: 600px;
+            margin: 0 auto var(--spacing-2xl);
+            position: relative;
+        }
+        
+        .search-box input {
+            width: 100%;
+            padding: var(--spacing-md) var(--spacing-lg);
+            padding-left: 50px;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--radius-xl);
+            font-size: var(--font-size-lg);
+            transition: border-color 0.2s ease;
+        }
+        
+        .search-box input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .search-box i {
+            position: absolute;
+            left: var(--spacing-lg);
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            font-size: var(--font-size-lg);
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: var(--spacing-xl);
+            margin-bottom: var(--spacing-3xl);
+        }
+        
+        .category-card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: var(--spacing-xl);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .category-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--spacing-lg);
+        }
+        
+        .category-icon i {
+            font-size: var(--font-size-xl);
+            color: var(--white);
+        }
+        
+        .faq-section {
+            background: var(--light-gray);
+            padding: var(--spacing-3xl) 0;
+        }
+        
+        .faq-item {
+            background: var(--white);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+        
+        .faq-question {
+            padding: var(--spacing-lg);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--secondary-color);
+            transition: background-color 0.2s ease;
+        }
+        
+        .faq-question:hover {
+            background-color: var(--light-gray);
+        }
+        
+        .faq-answer {
+            padding: 0 var(--spacing-lg) var(--spacing-lg);
+            color: var(--gray);
+            display: none;
+        }
+        
+        .faq-answer.active {
+            display: block;
+        }
+        
+        .faq-toggle {
+            transition: transform 0.2s ease;
+        }
+        
+        .faq-toggle.active {
+            transform: rotate(180deg);
+        }
+        
+        .contact-cta {
+            text-align: center;
+            padding: var(--spacing-3xl);
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: var(--white);
+            border-radius: var(--radius-lg);
+            margin-top: var(--spacing-3xl);
+        }
+        
+        .contact-cta h3 {
+            color: var(--white);
+            margin-bottom: var(--spacing-md);
+        }
+        
+        .contact-cta p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: var(--spacing-lg);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="nav-brand">
+                    <i class="fas fa-certificate"></i>
+                    <span>CertiCore</span>
+                </div>
+                <ul class="nav-menu" id="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="courses.html" class="nav-link">Courses</a></li>
+                    <li><a href="exams.html" class="nav-link">Practice Exams</a></li>
+                    <li><a href="about.html" class="nav-link">About</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+                <div class="nav-auth">
+                    <button class="btn btn-outline">Sign In</button>
+                    <button class="btn btn-primary">Get Started</button>
+                </div>
+                <div class="nav-toggle" id="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Help Center Page Content -->
+    <main style="padding-top: 80px;">
+        <!-- Help Center Header -->
+        <section class="help-header" style="padding: var(--spacing-3xl) 0; background-color: var(--light-gray);">
+            <div class="container">
+                <div class="section-header">
+                    <h1>Help Center</h1>
+                    <p>Find answers to your questions and get the support you need</p>
+                </div>
+                
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search for help articles..." id="helpSearch">
+                </div>
+            </div>
+        </section>
+
+        <!-- Help Categories -->
+        <section style="padding: var(--spacing-3xl) 0;">
+            <div class="container">
+                <h2 style="color: var(--secondary-color); margin-bottom: var(--spacing-xl); text-align: center;">Browse by Category</h2>
+                
+                <div class="category-grid">
+                    <div class="category-card" onclick="scrollToSection('getting-started')">
+                        <div class="category-icon">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">Getting Started</h3>
+                        <p style="color: var(--gray); margin-bottom: var(--spacing-md);">Learn how to create your account and start your first course</p>
+                        <span style="color: var(--primary-color); font-weight: 600;">5 articles</span>
+                    </div>
+                    
+                    <div class="category-card" onclick="scrollToSection('courses')">
+                        <div class="category-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">Courses & Learning</h3>
+                        <p style="color: var(--gray); margin-bottom: var(--spacing-md);">Everything about accessing and completing your courses</p>
+                        <span style="color: var(--primary-color); font-weight: 600;">8 articles</span>
+                    </div>
+                    
+                    <div class="category-card" onclick="scrollToSection('exams')">
+                        <div class="category-icon">
+                            <i class="fas fa-clipboard-check"></i>
+                        </div>
+                        <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">Practice Exams</h3>
+                        <p style="color: var(--gray); margin-bottom: var(--spacing-md);">How to take practice exams and understand your results</p>
+                        <span style="color: var(--primary-color); font-weight: 600;">6 articles</span>
+                    </div>
+                    
+                    <div class="category-card" onclick="scrollToSection('account')">
+                        <div class="category-icon">
+                            <i class="fas fa-user-cog"></i>
+                        </div>
+                        <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">Account Management</h3>
+                        <p style="color: var(--gray); margin-bottom: var(--spacing-md);">Manage your profile, password, and account settings</p>
+                        <span style="color: var(--primary-color); font-weight: 600;">7 articles</span>
+                    </div>
+                    
+                    <div class="category-card" onclick="scrollToSection('billing')">
+                        <div class="category-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">Billing & Payments</h3>
+                        <p style="color: var(--gray); margin-bottom: var(--spacing-md);">Questions about payments, refunds, and subscriptions</p>
+                        <span style="color: var(--primary-color); font-weight: 600;">4 articles</span>
+                    </div>
+                    
+                    <div class="category-card" onclick="scrollToSection('technical')">
+                        <div class="category-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-sm);">Technical Support</h3>
+                        <p style="color: var(--gray); margin-bottom: var(--spacing-md);">Troubleshoot technical issues and system requirements</p>
+                        <span style="color: var(--primary-color); font-weight: 600;">9 articles</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section" id="faq">
+            <div class="container">
+                <h2 style="color: var(--secondary-color); margin-bottom: var(--spacing-xl); text-align: center;">Frequently Asked Questions</h2>
+                
+                <div id="getting-started">
+                    <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-lg);">Getting Started</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>How do I create a CertiCore account?</span>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>To create your CertiCore account, click the "Get Started" button on our homepage. Fill in your email, create a secure password, and verify your email address. Once verified, you'll have full access to our platform and can start browsing courses immediately.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>What are the system requirements?</span>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>CertiCore works on any modern web browser (Chrome, Firefox, Safari, Edge). For the best experience, we recommend a stable internet connection of at least 5 Mbps for video streaming. Our platform is fully responsive and works on desktop, tablet, and mobile devices.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="courses" style="margin-top: var(--spacing-2xl);">
+                    <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-lg);">Courses & Learning</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>How do I access my purchased courses?</span>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>After purchasing a course, log into your account and navigate to "My Courses" in your dashboard. All your enrolled courses will be listed there with progress tracking. You can access course materials, videos, and resources anytime.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Can I download course materials for offline viewing?</span>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! Most course materials including PDFs, study guides, and practice questions can be downloaded for offline study. Video content requires an internet connection, but you can download transcripts and supplementary materials.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="exams" style="margin-top: var(--spacing-2xl);">
+                    <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-lg);">Practice Exams</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>How many times can I take a practice exam?</span>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>You can take practice exams unlimited times! We encourage multiple attempts to reinforce learning. Each attempt may have different questions from our extensive question bank to provide varied practice experience.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Do practice exams simulate the real certification exam?</span>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Absolutely! Our practice exams are designed to closely mirror the actual certification exams in format, difficulty, and timing. They include the same question types and cover all exam objectives to give you the most realistic preparation experience.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="billing" style="margin-top: var(--spacing-2xl);">
+                    <h3 style="color: var(--secondary-color); margin-bottom: var(--spacing-lg);">Billing & Payments</h3>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>What is your refund policy?</span>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>We offer a 30-day money-back guarantee on all courses. If you're not satisfied with your purchase, contact our support team within 30 days for a full refund. No questions asked!</p>
+                        </div>
+                    </div>
+                    
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFAQ(this)">
+                            <span>Do you offer group discounts?</span>
+                            <i class="fas fa-chevron-down faq-toggle"></i>
+                        </div>
+                        <div class="faq-answer">
+                            <p>Yes! We offer special pricing for teams of 5 or more students. Contact our sales team for custom pricing and enterprise solutions. We also provide volume discounts for educational institutions and corporate training programs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-cta">
+                    <h3>Still need help?</h3>
+                    <p>Can't find the answer you're looking for? Our support team is here to help.</p>
+                    <a href="contact.html" class="btn btn-white btn-large">Contact Support</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-certificate"></i>
+                        <span>CertiCore</span>
+                    </div>
+                    <p>Empowering IT professionals with world-class certification training and practice exams.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Courses</h4>
+                    <ul>
+                        <li><a href="courses.html">CertiCore Certifications</a></li>
+                        <li><a href="courses.html">Cisco Certifications</a></li>
+                        <li><a href="courses.html">Microsoft Certifications</a></li>
+                        <li><a href="courses.html">AWS Certifications</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="exams.html">Practice Exams</a></li>
+                        <li><a href="#">Study Guides</a></li>
+                        <li><a href="#">Video Library</a></li>
+                        <li><a href="#">Community Forum</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="system-status.html">System Status</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CertiCore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function toggleFAQ(element) {
+            const answer = element.nextElementSibling;
+            const toggle = element.querySelector('.faq-toggle');
+            
+            // Close all other FAQ items
+            document.querySelectorAll('.faq-answer').forEach(item => {
+                if (item !== answer) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            document.querySelectorAll('.faq-toggle').forEach(item => {
+                if (item !== toggle) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Toggle current item
+            answer.classList.toggle('active');
+            toggle.classList.toggle('active');
+        }
+        
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                const headerHeight = document.querySelector('.header').offsetHeight;
+                const targetPosition = section.offsetTop - headerHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+        
+        // Search functionality
+        document.getElementById('helpSearch').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question span').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer p').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = searchTerm ? 'none' : 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

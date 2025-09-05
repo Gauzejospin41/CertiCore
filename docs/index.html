@@ -3,142 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Careers - CertiCore Professional IT Certification Training</title>
+    <title>CertiCore - Professional IT Certification Training</title>
     <link rel="stylesheet" href="styles/main.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        .careers-form {
-            background: var(--white);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-xl);
-            padding: var(--spacing-3xl);
-            margin: var(--spacing-xl) 0;
-        }
-
-        .form-section {
-            margin-bottom: var(--spacing-2xl);
-        }
-
-        .form-section h3 {
-            color: var(--secondary-color);
-            font-size: var(--font-size-xl);
-            margin-bottom: var(--spacing-lg);
-            padding-bottom: var(--spacing-sm);
-            border-bottom: 2px solid var(--light-gray);
-        }
-
-        .form-group {
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-md);
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: var(--spacing-xs);
-            font-weight: 600;
-            color: var(--secondary-color);
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: var(--spacing-sm);
-            border: 2px solid var(--light-gray);
-            border-radius: var(--radius-md);
-            font-size: var(--font-size-base);
-            font-family: var(--font-family);
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
-        }
-
-        .form-group textarea {
-            min-height: 100px;
-            resize: vertical;
-        }
-
-        .form-note {
-            font-size: var(--font-size-sm);
-            color: var(--gray);
-            margin-top: var(--spacing-xs);
-        }
-
-        .file-info {
-            font-size: var(--font-size-sm);
-            color: var(--success-color);
-            margin-top: var(--spacing-xs);
-            font-style: italic;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: var(--spacing-sm);
-            margin-top: var(--spacing-sm);
-        }
-
-        .skill-checkbox {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-        }
-
-        .skill-checkbox input[type="checkbox"] {
-            width: auto;
-            margin: 0;
-        }
-
-        .skill-checkbox label {
-            margin: 0;
-            font-weight: 500;
-            cursor: pointer;
-        }
-
-        .submit-section {
-            text-align: center;
-            margin-top: var(--spacing-2xl);
-            padding-top: var(--spacing-xl);
-            border-top: 1px solid var(--light-gray);
-        }
-
-        .error-message {
-            color: var(--primary-color);
-            font-size: var(--font-size-sm);
-            margin-top: var(--spacing-xs);
-            display: none;
-        }
-
-        .required {
-            color: var(--primary-color);
-        }
-
-        @media (max-width: 768px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-
-            .careers-form {
-                padding: var(--spacing-xl);
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Header -->
@@ -149,12 +17,13 @@
                     <span>CertiCore</span>
                 </div>
                 <ul class="nav-menu" id="nav-menu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
                     <li><a href="courses.html" class="nav-link">Courses</a></li>
                     <li><a href="exams.html" class="nav-link">Practice Exams</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
                     <li><a href="contact.html" class="nav-link">Contact</a></li>
-                    <li><a href="careers.html" class="nav-link active">Careers</a></li>
+                    <li><a href="careers.html" class="nav-link">Careerst</a></li>
+
                 </ul>
                 <div class="nav-auth">
                     <button class="btn btn-outline">Sign In</button>
@@ -169,221 +38,191 @@
         </nav>
     </header>
 
-    <!-- Careers Page Content -->
-    <main style="padding-top: 80px;">
-        <!-- Careers Header -->
-        <section class="careers-header" style="padding: var(--spacing-3xl) 0; background-color: var(--light-gray);">
-            <div class="container">
-                <div class="section-header">
-                    <h1>Join the CertiCore Team</h1>
-                    <p>Help us empower IT professionals worldwide with world-class certification training</p>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Master IT Certifications with <span class="text-primary">CertiCore</span></h1>
+                <p class="hero-subtitle">Comprehensive training platform for CompTIA, Cisco, Microsoft, and other industry-leading certifications. Join thousands of successful IT professionals.</p>
+                <div class="hero-actions">
+                    <button class="btn btn-primary btn-large">Start Learning Today</button>
+                    <button class="btn btn-outline btn-large">View Courses</button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">50,000+</span>
+                        <span class="stat-label">Students Certified</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">200+</span>
+                        <span class="stat-label">Expert Courses</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Pass Rate</span>
+                    </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Application Form -->
-        <section style="padding: var(--spacing-3xl) 0;">
-            <div class="container">
-                <div class="careers-form">
-                    <form id="jobForm" action="https://formspree.io/f/meolpljg" method="POST" enctype="multipart/form-data" novalidate>
-                        <!-- Personal Information -->
-                        <div class="form-section">
-                            <h3><i class="fas fa-user" style="margin-right: var(--spacing-sm); color: var(--primary-color);"></i>Personal Information</h3>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="fullname">Full Name <span class="required">*</span></label>
-                                    <input type="text" id="fullname" name="fullname" required>
-                                    <div class="error-message" id="fullname-error">Please enter your full name</div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="email">Email Address <span class="required">*</span></label>
-                                    <input type="email" id="email" name="email" required>
-                                    <div class="error-message" id="email-error">Please enter a valid email address</div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="phone">Phone Number <span class="required">*</span></label>
-                                    <input type="tel" id="phone" name="phone" required pattern="[0-9]{10,15}">
-                                    <div class="error-message" id="phone-error">Please enter a valid phone number</div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="address">Current Address</label>
-                                    <input type="text" id="address" name="address">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="linkedin">LinkedIn Profile</label>
-                                <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/your-profile">
-                            </div>
-                        </div>
-
-                        <!-- Position Details -->
-                        <div class="form-section">
-                            <h3><i class="fas fa-briefcase" style="margin-right: var(--spacing-sm); color: var(--primary-color);"></i>Position Information</h3>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="role">Role Applying For <span class="required">*</span></label>
-                                    <select id="role" name="role" required>
-                                        <option value="">-- Select Position --</option>
-                                        <option value="instructor">Certification Instructor</option>
-                                        <option value="developer">Software Developer</option>
-                                        <option value="designer">UI/UX Designer</option>
-                                        <option value="content">Content Developer</option>
-                                        <option value="marketing">Marketing Specialist</option>
-                                        <option value="support">Customer Support</option>
-                                        <option value="analyst">Business Analyst</option>
-                                        <option value="manager">Project Manager</option>
-                                        <option value="other">Other</option>
-                                    </select>
-                                    <div class="error-message" id="role-error">Please select a position</div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="availability">Availability <span class="required">*</span></label>
-                                    <select id="availability" name="availability" required>
-                                        <option value="">-- Select Availability --</option>
-                                        <option value="immediately">Immediately</option>
-                                        <option value="2weeks">2 Weeks Notice</option>
-                                        <option value="1month">1 Month Notice</option>
-                                        <option value="negotiable">Negotiable</option>
-                                    </select>
-                                    <div class="error-message" id="availability-error">Please select your availability</div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="salary">Expected Salary (USD)</label>
-                                <input type="number" id="salary" name="salary" min="0" placeholder="e.g., 75000">
-                                <p class="form-note">Optional - Leave blank if you prefer to discuss during interview</p>
-                            </div>
-                        </div>
-
-                        <!-- Work Experience -->
-                        <div class="form-section">
-                            <h3><i class="fas fa-chart-line" style="margin-right: var(--spacing-sm); color: var(--primary-color);"></i>Work Experience</h3>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="experience">Years of Experience <span class="required">*</span></label>
-                                    <input type="number" id="experience" name="experience" required min="0" max="50">
-                                    <div class="error-message" id="experience-error">Please enter your years of experience</div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="lastEmployer">Most Recent Employer</label>
-                                    <input type="text" id="lastEmployer" name="lastEmployer">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="coverLetter">Upload Cover Letter</label>
-                                <input type="file" id="coverLetter" name="coverLetter" accept=".pdf,.doc,.docx">
-                                <p class="form-note">Optional | PDF or DOC format only | Max 5MB</p>
-                                <div class="file-info" id="coverLetterInfo"></div>
-                            </div>
-                        </div>
-
-                        <!-- Education -->
-                        <div class="form-section">
-                            <h3><i class="fas fa-graduation-cap" style="margin-right: var(--spacing-sm); color: var(--primary-color);"></i>Education</h3>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="degree">Highest Degree <span class="required">*</span></label>
-                                    <select id="degree" name="degree" required>
-                                        <option value="">-- Select Degree --</option>
-                                        <option value="highschool">High School Diploma</option>
-                                        <option value="associate">Associate's Degree</option>
-                                        <option value="bachelor">Bachelor's Degree</option>
-                                        <option value="master">Master's Degree</option>
-                                        <option value="phd">Ph.D. or higher</option>
-                                        <option value="certification">Professional Certifications</option>
-                                    </select>
-                                    <div class="error-message" id="degree-error">Please select your highest degree</div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="institution">Institution</label>
-                                    <input type="text" id="institution" name="institution">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="gradYear">Graduation Year</label>
-                                <input type="number" id="gradYear" name="gradYear" min="1950" max="2030">
-                            </div>
-                        </div>
-
-                        <!-- Skills -->
-                        <div class="form-section">
-                            <h3><i class="fas fa-cogs" style="margin-right: var(--spacing-sm); color: var(--primary-color);"></i>Skills & Certifications</h3>
-                            <div class="form-group">
-                                <label>Key Skills (Select all that apply)</label>
-                                <div class="skills-grid">
-                                    <div class="skill-checkbox">
-                                        <input type="checkbox" id="skill-communication" name="skills" value="communication">
-                                        <label for="skill-communication">Communication</label>
-                                    </div>
-                                    <div class="skill-checkbox">
-                                        <input type="checkbox" id="skill-leadership" name="skills" value="leadership">
-                                        <label for="skill-leadership">Leadership</label>
-                                    </div>
-                                    <div class="skill-checkbox">
-                                        <input type="checkbox" id="skill-teamwork" name="skills" value="teamwork">
-                                        <label for="skill-teamwork">Teamwork</label>
-                                    </div>
-                                    <div class="skill-checkbox">
-                                        <input type="checkbox" id="skill-problem-solving" name="skills" value="problem-solving">
-                                        <label for="skill-problem-solving">Problem Solving</label>
-                                    </div>
-                                    <div class="skill-checkbox">
-                                        <input type="checkbox" id="skill-technical" name="skills" value="technical">
-                                        <label for="skill-technical">Technical Skills</label>
-                                    </div>
-                                    <div class="skill-checkbox">
-                                        <input type="checkbox" id="skill-teaching" name="skills" value="teaching">
-                                        <label for="skill-teaching">Teaching/Training</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="certifications">IT Certifications</label>
-                                <textarea id="certifications" name="certifications" placeholder="List any IT certifications you hold (e.g., CertiCore A+, Security+, CCNA, etc.)"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <label for="additional">Additional Information</label>
-                                <textarea id="additional" name="additional" placeholder="Tell us anything else we should know about your background, achievements, or why you want to join CertiCore..."></textarea>
-                            </div>
-                        </div>
-
-                        <!-- Documents -->
-                        <div class="form-section">
-                            <h3><i class="fas fa-file-upload" style="margin-right: var(--spacing-sm); color: var(--primary-color);"></i>Required Documents</h3>
-                            <div class="form-row">
-                                <div class="form-group">
-                                    <label for="resume">Upload Resume <span class="required">*</span></label>
-                                    <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
-                                    <p class="form-note">Required | PDF or DOC format | Max 5MB</p>
-                                    <div class="file-info" id="resumeInfo"></div>
-                                    <div class="error-message" id="resume-error">Please upload your resume</div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="video">Introduction Video <span class="required">*</span></label>
-                                    <input type="file" id="video" name="video" accept="video/*" required>
-                                    <p class="form-note">Required | Tell us about yourself | Max 50MB | MP4 preferred</p>
-                                    <div class="file-info" id="videoInfo"></div>
-                                    <div class="error-message" id="video-error">Please upload an introduction video</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="submit-section">
-                            <button type="submit" class="btn btn-primary btn-large">
-                                <i class="fas fa-paper-plane" style="margin-right: var(--spacing-sm);"></i>
-                                Submit Application
-                            </button>
-                            <p class="form-note" style="margin-top: var(--spacing-md);">
-                                By submitting this application, you agree to our privacy policy and terms of service.
-                            </p>
-                        </div>
-                    </form>
+            <div class="hero-image">
+                <div class="hero-card">
+                    <div class="card-header">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>CertiCore Security+</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 75%"></div>
+                    </div>
+                    <span class="progress-text">75% Complete</span>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose CertiCore?</h2>
+                <p>Everything you need to succeed in your certification journey</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <h3>Interactive Learning</h3>
+                    <p>Engaging video content, hands-on labs, and interactive simulations designed by industry experts.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Practice Exams</h3>
+                    <p>Realistic practice tests that mirror actual certification exams with detailed explanations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning progress with detailed analytics and personalized study recommendations.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Expert Support</h3>
+                    <p>Get help from certified instructors and connect with a community of fellow learners.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses">
+        <div class="container">
+            <div class="section-header">
+                <h2>Popular Certification Courses</h2>
+                <p>Choose from our comprehensive library of certification training courses</p>
+            </div>
+            <div class="course-filters">
+                <button class="filter-btn active" data-filter="all">All Courses</button>
+                <button class="filter-btn" data-filter="certicore">CertiCore</button>
+                <button class="filter-btn" data-filter="cisco">Cisco</button>
+                <button class="filter-btn" data-filter="microsoft">Microsoft</button>
+                <button class="filter-btn" data-filter="aws">AWS</button>
+            </div>
+            <div class="courses-grid" id="courses-grid">
+                <!-- Courses will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Exams Section -->
+    <section id="exams" class="exams">
+        <div class="container">
+            <div class="section-header">
+                <h2>Practice Exams</h2>
+                <p>Test your knowledge with realistic practice exams</p>
+            </div>
+            <div class="exams-grid">
+                <div class="exam-card">
+                    <div class="exam-header">
+                        <h3>CertiCore A+ Core 1</h3>
+                        <span class="exam-badge">220-1101</span>
+                    </div>
+                    <div class="exam-details">
+                        <div class="exam-stat">
+                            <span class="stat-label">Questions:</span>
+                            <span class="stat-value">90</span>
+                        </div>
+                        <div class="exam-stat">
+                            <span class="stat-label">Time:</span>
+                            <span class="stat-value">90 min</span>
+                        </div>
+                        <div class="exam-stat">
+                            <span class="stat-label">Difficulty:</span>
+                            <span class="stat-value">Intermediate</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-full">Start Practice Exam</button>
+                </div>
+                <div class="exam-card">
+                    <div class="exam-header">
+                        <h3>CertiCore Security+</h3>
+                        <span class="exam-badge">SY0-701</span>
+                    </div>
+                    <div class="exam-details">
+                        <div class="exam-stat">
+                            <span class="stat-label">Questions:</span>
+                            <span class="stat-value">90</span>
+                        </div>
+                        <div class="exam-stat">
+                            <span class="stat-label">Time:</span>
+                            <span class="stat-value">90 min</span>
+                        </div>
+                        <div class="exam-stat">
+                            <span class="stat-label">Difficulty:</span>
+                            <span class="stat-value">Advanced</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-full">Start Practice Exam</button>
+                </div>
+                <div class="exam-card">
+                    <div class="exam-header">
+                        <h3>Cisco CCNA</h3>
+                        <span class="exam-badge">200-301</span>
+                    </div>
+                    <div class="exam-details">
+                        <div class="exam-stat">
+                            <span class="stat-label">Questions:</span>
+                            <span class="stat-value">120</span>
+                        </div>
+                        <div class="exam-stat">
+                            <span class="stat-label">Time:</span>
+                            <span class="stat-value">120 min</span>
+                        </div>
+                        <div class="exam-stat">
+                            <span class="stat-label">Difficulty:</span>
+                            <span class="stat-value">Advanced</span>
+                        </div>
+                    </div>
+                    <button class="btn btn-primary btn-full">Start Practice Exam</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Advance Your IT Career?</h2>
+                <p>Join thousands of professionals who have successfully earned their certifications with CertiCore</p>
+                <button class="btn btn-white btn-large">Start Your Journey Today</button>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -415,17 +254,17 @@
                     <h4>Resources</h4>
                     <ul>
                         <li><a href="exams.html">Practice Exams</a></li>
-                        <li><a href="study-guides.html">Study Guides</a></li>
-                        <li><a href="video-library.html">Video Library</a></li>
-                        <li><a href="community-forum.html">Community Forum</a></li>
+                        <li><a href="#">Study Guides</a></li>
+                        <li><a href="#">Video Library</a></li>
+                        <li><a href="#">Community Forum</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Support</h4>
                     <ul>
-                        <li><a href="help-center.html">Help Center</a></li>
+                        <li><a href="#">Help Center</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="careers.html">Careers</a></li>
+                        <li><a href="system-status.html">System Status</a></li>
                         <li><a href="privacy-policy.html">Privacy Policy</a></li>
                     </ul>
                 </div>
@@ -437,129 +276,5 @@
     </footer>
 
     <script src="js/main.js"></script>
-    <script>
-        const form = document.getElementById("jobForm");
-
-        // Form validation and submission
-        form.addEventListener("submit", function(e) {
-            e.preventDefault();
-            
-            let isValid = true;
-            const requiredFields = ['fullname', 'email', 'phone', 'role', 'availability', 'experience', 'degree'];
-            
-            // Validate required fields
-            requiredFields.forEach(fieldId => {
-                const field = document.getElementById(fieldId);
-                const errorElement = document.getElementById(fieldId + '-error');
-                
-                if (!field.value.trim()) {
-                    errorElement.style.display = 'block';
-                    field.style.borderColor = 'var(--primary-color)';
-                    isValid = false;
-                } else {
-                    errorElement.style.display = 'none';
-                    field.style.borderColor = 'var(--light-gray)';
-                }
-            });
-
-            // Validate email format
-            const email = document.getElementById('email');
-            const emailError = document.getElementById('email-error');
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            
-            if (email.value && !emailRegex.test(email.value)) {
-                emailError.textContent = 'Please enter a valid email address';
-                emailError.style.display = 'block';
-                email.style.borderColor = 'var(--primary-color)';
-                isValid = false;
-            }
-
-            // Validate file uploads
-            const resume = document.getElementById("resume").files[0];
-            const video = document.getElementById("video").files[0];
-            const resumeError = document.getElementById('resume-error');
-            const videoError = document.getElementById('video-error');
-
-            if (!resume) {
-                resumeError.style.display = 'block';
-                isValid = false;
-            } else if (resume.size > 5 * 1024 * 1024) {
-                resumeError.textContent = 'Resume file must be under 5MB';
-                resumeError.style.display = 'block';
-                isValid = false;
-            } else {
-                resumeError.style.display = 'none';
-            }
-
-            if (!video) {
-                videoError.style.display = 'block';
-                isValid = false;
-            } else if (video.size > 50 * 1024 * 1024) {
-                videoError.textContent = 'Video file must be under 50MB';
-                videoError.style.display = 'block';
-                isValid = false;
-            } else {
-                videoError.style.display = 'none';
-            }
-
-            if (isValid) {
-                // Show success notification
-                showNotification('✅ Application submitted successfully! We\'ll review your application and get back to you within 5 business days.', 'success');
-                
-                // Reset form
-                form.reset();
-                document.getElementById("resumeInfo").textContent = "";
-                document.getElementById("videoInfo").textContent = "";
-                document.getElementById("coverLetterInfo").textContent = "";
-                
-                // Scroll to top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
-                showNotification('Please fill in all required fields and fix any errors.', 'error');
-            }
-        });
-
-        // File upload handlers
-        document.getElementById("resume").addEventListener("change", function() {
-            const file = this.files[0];
-            const info = document.getElementById("resumeInfo");
-            if (file) {
-                info.textContent = `Selected: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
-            } else {
-                info.textContent = "";
-            }
-        });
-
-        document.getElementById("video").addEventListener("change", function() {
-            const file = this.files[0];
-            const info = document.getElementById("videoInfo");
-            if (file) {
-                info.textContent = `Selected: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
-            } else {
-                info.textContent = "";
-            }
-        });
-
-        document.getElementById("coverLetter").addEventListener("change", function() {
-            const file = this.files[0];
-            const info = document.getElementById("coverLetterInfo");
-            if (file) {
-                info.textContent = `Selected: ${file.name} (${(file.size / 1024 / 1024).toFixed(2)} MB)`;
-            } else {
-                info.textContent = "";
-            }
-        });
-
-        // Clear error messages on input
-        document.querySelectorAll('input, select, textarea').forEach(field => {
-            field.addEventListener('input', function() {
-                const errorElement = document.getElementById(this.id + '-error');
-                if (errorElement) {
-                    errorElement.style.display = 'none';
-                    this.style.borderColor = 'var(--light-gray)';
-                }
-            });
-        });
-    </script>
 </body>
 </html>

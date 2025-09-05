@@ -9,23 +9,46 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .careers-form {
-            background: var(--white);
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-xl);
+            box-shadow: var(--shadow-xl), var(--shadow-golden);
             padding: var(--spacing-3xl);
             margin: var(--spacing-xl) 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .careers-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 30%, rgba(243, 156, 18, 0.05) 0%, transparent 50%);
+            pointer-events: none;
         }
 
         .form-section {
             margin-bottom: var(--spacing-2xl);
+            position: relative;
+            z-index: 1;
         }
 
         .form-section h3 {
-            color: var(--secondary-color);
+            background: var(--golden-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             font-size: var(--font-size-xl);
             margin-bottom: var(--spacing-lg);
             padding-bottom: var(--spacing-sm);
-            border-bottom: 2px solid var(--light-gray);
+            border-bottom: 2px solid rgba(243, 156, 18, 0.3);
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
         }
 
         .form-group {
@@ -42,7 +65,8 @@
             display: block;
             margin-bottom: var(--spacing-xs);
             font-weight: 600;
-            color: var(--secondary-color);
+            color: var(--white);
+            font-size: var(--font-size-sm);
         }
 
         .form-group input,
@@ -50,11 +74,19 @@
         .form-group textarea {
             width: 100%;
             padding: var(--spacing-sm);
-            border: 2px solid var(--light-gray);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: var(--white);
             border-radius: var(--radius-md);
             font-size: var(--font-size-base);
             font-family: var(--font-family);
-            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--gray);
         }
 
         .form-group input:focus,
@@ -62,7 +94,8 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+            box-shadow: 0 0 0 3px rgba(243, 156, 18, 0.2), var(--shadow-golden);
+            background: rgba(255, 255, 255, 0.08);
         }
 
         .form-group textarea {
@@ -72,15 +105,16 @@
 
         .form-note {
             font-size: var(--font-size-sm);
-            color: var(--gray);
+            color: rgba(255, 255, 255, 0.6);
             margin-top: var(--spacing-xs);
         }
 
         .file-info {
             font-size: var(--font-size-sm);
-            color: var(--success-color);
+            color: var(--primary-color);
             margin-top: var(--spacing-xs);
             font-style: italic;
+            font-weight: 500;
         }
 
         .skills-grid {
@@ -94,24 +128,72 @@
             display: flex;
             align-items: center;
             gap: var(--spacing-xs);
+            padding: var(--spacing-sm);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius-md);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .skill-checkbox:hover {
+            background: rgba(243, 156, 18, 0.1);
+            border-color: rgba(243, 156, 18, 0.3);
+            transform: translateY(-2px);
         }
 
         .skill-checkbox input[type="checkbox"] {
             width: auto;
             margin: 0;
+            accent-color: var(--primary-color);
         }
 
         .skill-checkbox label {
             margin: 0;
             font-weight: 500;
             cursor: pointer;
+            color: var(--white);
+            font-size: var(--font-size-sm);
         }
 
         .submit-section {
             text-align: center;
             margin-top: var(--spacing-2xl);
             padding-top: var(--spacing-xl);
-            border-top: 1px solid var(--light-gray);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            z-index: 1;
+        }
+
+        .submit-section .btn {
+            background: var(--golden-gradient);
+            border: none;
+            color: var(--white);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: var(--shadow-golden);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-section .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-golden), 0 10px 30px rgba(243, 156, 18, 0.4);
+        }
+
+        .submit-section .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .submit-section .btn:hover::before {
+            left: 100%;
         }
 
         .error-message {
@@ -123,6 +205,7 @@
 
         .required {
             color: var(--primary-color);
+            font-weight: 700;
         }
 
         @media (max-width: 768px) {
@@ -135,7 +218,7 @@
             }
 
             .skills-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             }
         }
     </style>
@@ -185,7 +268,7 @@
         <section style="padding: var(--spacing-3xl) 0;">
             <div class="container">
                 <div class="careers-form">
-                    <form id="jobForm" action="https://formspree.io/f/meolpljg" method="POST" enctype="multipart/form-data" novalidate>
+                    <form id="jobForm" action="https://formspree.io/f/meolpljg" method="POST"  novalidate>
                         <!-- Personal Information -->
                         <div class="form-section">
                             <h3><i class="fas fa-user" style="margin-right: var(--spacing-sm); color: var(--primary-color);"></i>Personal Information</h3>
@@ -225,27 +308,27 @@
                                 <div class="form-group">
                                     <label for="role">Role Applying For <span class="required">*</span></label>
                                     <select id="role" name="role" required>
-                                        <option value="">-- Select Position --</option>
-                                        <option value="instructor">Certification Instructor</option>
-                                        <option value="developer">Software Developer</option>
-                                        <option value="designer">UI/UX Designer</option>
-                                        <option value="content">Content Developer</option>
-                                        <option value="marketing">Marketing Specialist</option>
-                                        <option value="support">Customer Support</option>
-                                        <option value="analyst">Business Analyst</option>
-                                        <option value="manager">Project Manager</option>
-                                        <option value="other">Other</option>
+                                        <option value="" style="color:black;">-- Select Position --</option>
+                                        <option value="instructor" style="color:black;">Certification Instructor</option>
+                                        <option value="developer" style="color:black;">Software Developer</option>
+                                        <option value="designer" style="color:black;">UI/UX Designer</option>
+                                        <option value="content" style="color:black;">Content Developer</option>
+                                        <option value="marketing" style="color:black;">Marketing Specialist</option>
+                                        <option value="support" style="color:black;">Customer Support</option>
+                                        <option value="analyst" style="color:black;">Business Analyst</option>
+                                        <option value="manager" style="color:black;">Project Manager</option>
+                                        <option value="other" style="color:black;">Other</option>
                                     </select>
                                     <div class="error-message" id="role-error">Please select a position</div>
                                 </div>
                                 <div class="form-group">
                                     <label for="availability">Availability <span class="required">*</span></label>
                                     <select id="availability" name="availability" required>
-                                        <option value="">-- Select Availability --</option>
-                                        <option value="immediately">Immediately</option>
-                                        <option value="2weeks">2 Weeks Notice</option>
-                                        <option value="1month">1 Month Notice</option>
-                                        <option value="negotiable">Negotiable</option>
+                                        <option value="" style="color:black">-- Select Availability --</option>
+                                        <option value="immediately" style="color:black;">Immediately</option>
+                                        <option value="2weeks" style="color:black;">2 Weeks Notice</option>
+                                        <option value="1month" style="color:black;">1 Month Notice</option>
+                                        <option value="negotiable" style="color:black;">Negotiable</option>
                                     </select>
                                     <div class="error-message" id="availability-error">Please select your availability</div>
                                 </div>
@@ -286,13 +369,13 @@
                                 <div class="form-group">
                                     <label for="degree">Highest Degree <span class="required">*</span></label>
                                     <select id="degree" name="degree" required>
-                                        <option value="">-- Select Degree --</option>
-                                        <option value="highschool">High School Diploma</option>
-                                        <option value="associate">Associate's Degree</option>
-                                        <option value="bachelor">Bachelor's Degree</option>
-                                        <option value="master">Master's Degree</option>
-                                        <option value="phd">Ph.D. or higher</option>
-                                        <option value="certification">Professional Certifications</option>
+                                        <option value="" style="color:black;">-- Select Degree --</option>
+                                        <option value="highschool" style="color:black;">High School Diploma</option>
+                                        <option value="associate" style="color:black;">Associate's Degree</option>
+                                        <option value="bachelor" style="color:black;">Bachelor's Degree</option>
+                                        <option value="master" style="color:black;">Master's Degree</option>
+                                        <option value="phd" style="color:black;">Ph.D. or higher</option>
+                                        <option value="certification" style="color:black;">Professional Certifications</option>
                                     </select>
                                     <div class="error-message" id="degree-error">Please select your highest degree</div>
                                 </div>
@@ -391,7 +474,6 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-brand">
-                        <i class="fas fa-certificate"></i>
                         <span>CertiCore</span>
                     </div>
                     <p>Empowering IT professionals with world-class certification training and practice exams.</p>
@@ -423,10 +505,10 @@
                 <div class="footer-section">
                     <h4>Support</h4>
                     <ul>
-                        <li><a href="#">Help Center</a></li>
+                        <li><a href="help-center.html">Help Center</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                         <li><a href="careers.html">Careers</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
                     </ul>
                 </div>
             </div>

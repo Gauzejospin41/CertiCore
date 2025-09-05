@@ -524,16 +524,13 @@
 
         // Form validation and submission
         form.addEventListener("submit", function(e) {
-            e.preventDefault();
-            
             let isValid = true;
             const requiredFields = ['fullname', 'email', 'phone', 'role', 'availability', 'experience', 'degree'];
-            
+
             // Validate required fields
             requiredFields.forEach(fieldId => {
                 const field = document.getElementById(fieldId);
                 const errorElement = document.getElementById(fieldId + '-error');
-                
                 if (!field.value.trim()) {
                     errorElement.style.display = 'block';
                     field.style.borderColor = 'var(--primary-color)';
@@ -548,7 +545,6 @@
             const email = document.getElementById('email');
             const emailError = document.getElementById('email-error');
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            
             if (email.value && !emailRegex.test(email.value)) {
                 emailError.textContent = 'Please enter a valid email address';
                 emailError.style.display = 'block';
@@ -584,21 +580,11 @@
                 videoError.style.display = 'none';
             }
 
-            if (isValid) {
-                // Show success notification
-                showNotification('✅ Application submitted successfully! We\'ll review your application and get back to you within 5 business days.', 'success');
-                
-                // Reset form
-                form.reset();
-                document.getElementById("resumeInfo").textContent = "";
-                document.getElementById("videoInfo").textContent = "";
-                document.getElementById("coverLetterInfo").textContent = "";
-                
-                // Scroll to top
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            } else {
+            if (!isValid) {
+                e.preventDefault();
                 showNotification('Please fill in all required fields and fix any errors.', 'error');
             }
+            // If valid, let the form submit to Formspree (do not preventDefault)
         });
 
         // File upload handlers
